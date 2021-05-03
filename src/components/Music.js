@@ -6,8 +6,9 @@ function Music() {
     const [music, setMusic] = useState('')
 
     useEffect(() => {
+      const BACKEND_URL = "https://pokemonmusicnodejs.herokuapp.com/music";
       const getPokemonTest = async () => {
-        axios.get("https://pokemonmusicnodejs.herokuapp.com/music").then(res => {
+        axios.get(BACKEND_URL).then(res => {
           console.log(res)
           setMusic(res.data.vidInfo[1].dloadUrl)
         })
