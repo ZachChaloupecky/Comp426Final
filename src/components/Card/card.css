@@ -1,0 +1,106 @@
+.Card {
+    background: gray;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    float: left;
+    margin: 5px;
+    width: 200px;
+    justify-content:space-between;
+    max-height:600px;
+    flex-wrap: wrap;
+}
+.Card__img {
+    
+    display: flex;
+    align-content: center;
+    object-fit: fill;
+    width:200px;
+    height:200px;
+    padding-left: 60px;
+}
+
+.Card__name {
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+
+.Card__types {
+    text-align: center;
+    font-family: monospace;
+    font-size: 20px;
+    font-style: oblique;
+}
+
+.title {
+    float: left;
+    width: 300px;
+    height: 100px;
+    text-align: left;
+    border-radius: 15px;
+    background-color: bisque;
+    border-color: black;
+    border-width: 2px;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    font-family: 'pokemon-font', monospace;    
+    font-size: 40px;
+    border-style: solid;
+    padding-left: 20px;
+    padding-top:2px
+
+}
+.hp {
+    -webkit-font-smoothing: none;
+    font-family: monospace;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.float {
+    left:15%;
+    float:left;
+    width: 200px;
+    max-height:600px;
+
+
+}
+.float2 {
+    float: right;
+    padding-right: 15%;
+}
+.background {
+    padding-left: 15%;
+    height: 400px;
+    
+}
+.float3 {
+    float: right;
+    right: 10%;
+    position: absolute;
+}
+
+.pokemonCards {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 160px;
+    margin-left: 75px;
+    margin-right: 75px;
+}  
+.center {
+    text-align: center;
+} 
+.Card1 {
+    background: lightgray;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    float: left;
+    font-family: monospace;
+    margin: 5px;
+    width: 15%;
+    justify-content:space-between;
+    max-height:600px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,26 @@
+.login {
+    font-family: monospace;
+    margin: auto;
+    height: 30%;
+    width: 30%;
+}
+.email {
+    text-align: left;
+    padding-bottom: 10px;
+}
+.password {
+    text-align: left;
+    padding-bottom: 10px
+    
+}
+.buttonSmall {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.yeet {
+    margin-top: 10px;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 0px;
+}

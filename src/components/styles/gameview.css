@@ -1,0 +1,63 @@
+.button {
+      
+        text-align: center;
+        padding: 5px 8px 5px 8px;
+        display: inline-block;
+        border-radius: 6px;
+        -webkit-border-radius: 6px; 
+        -moz-border-radius: 6px;
+        -o-border-radius: 6px;
+        font-size: 50px;
+        font-family: "helvetica neue", Helvetica, Verdana, sans-serif;
+        color: #FFF;
+        background-color: #68A090;
+        border: 1px solid #44685E;
+        margin: 0px auto;
+        margin-right: 10px; 
+        width: 400px
+    
+}
+.buttonSmall {
+      
+    text-align: center;
+    padding: 5px 8px 5px 8px;
+    display: inline-block;
+    border-radius: 6px;
+    -webkit-border-radius: 6px; 
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    font-size: 15px;
+    font-family: "helvetica neue", Helvetica, Verdana, sans-serif;
+    color: #FFF;
+    background-color: #68A090;
+    border: 1px solid #44685E;
+    display:block;
+    margin: 0px auto;
+
+
+}
+.form {
+    text-align: center;
+
+}
+.attack {
+    width: 50%;
+    height: 100px;
+    text-align: left;
+    color: white;
+    align-content: center;
+    border-radius: 15px;
+    background-color: lightgray;
+    border-color: black;
+    border-width: 2px;
+    font-smooth: never;
+    -webkit-font-smoothing: none;
+    font-family: monospace;    
+    font-size: 25px;
+    border-style: solid;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    display: block;
+    margin: 0 auto;
+    
+}
