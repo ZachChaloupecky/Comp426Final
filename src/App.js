@@ -4,7 +4,7 @@ import { AuthProvider } from './components/contexts/AuthContext';
 import Signup from './components/Signup';
 import Profile from './Profile'
 import Gameview from './components/Gameview'
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import {HashRouter as Router, Switch, Route} from 'react-router-dom'
 import Login from './components/Login'
 import PrivateRoute from './components/PrivateRoute'
 import Music from './components/Music';

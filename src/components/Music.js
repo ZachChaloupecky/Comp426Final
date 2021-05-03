@@ -7,7 +7,7 @@ function Music() {
 
     useEffect(() => {
       const getPokemonTest = async () => {
-        axios.get("/music").then(res => {
+        axios.get("https://pokemonmusicnodejs.herokuapp.com/music").then(res => {
           console.log(res)
           setMusic(res.data.vidInfo[1].dloadUrl)
         })
