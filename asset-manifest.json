@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Comp426Final/static/css/main.8ec5b490.chunk.css",
+    "main.js": "/Comp426Final/static/js/main.af20bb05.chunk.js",
+    "main.js.map": "/Comp426Final/static/js/main.af20bb05.chunk.js.map",
+    "runtime-main.js": "/Comp426Final/static/js/runtime-main.82a405fc.js",
+    "runtime-main.js.map": "/Comp426Final/static/js/runtime-main.82a405fc.js.map",
+    "static/js/2.4e8e9480.chunk.js": "/Comp426Final/static/js/2.4e8e9480.chunk.js",
+    "static/js/2.4e8e9480.chunk.js.map": "/Comp426Final/static/js/2.4e8e9480.chunk.js.map",
+    "index.html": "/Comp426Final/index.html",
+    "static/css/main.8ec5b490.chunk.css.map": "/Comp426Final/static/css/main.8ec5b490.chunk.css.map",
+    "static/js/2.4e8e9480.chunk.js.LICENSE.txt": "/Comp426Final/static/js/2.4e8e9480.chunk.js.LICENSE.txt",
+    "static/media/PokeLogo.d20b9469.png": "/Comp426Final/static/media/PokeLogo.d20b9469.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.82a405fc.js",
+    "static/js/2.4e8e9480.chunk.js",
+    "static/css/main.8ec5b490.chunk.css",
+    "static/js/main.af20bb05.chunk.js"
+  ]
+}
