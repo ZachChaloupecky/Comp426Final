@@ -95,7 +95,7 @@ function Gameview(props) {
             if(candies < 1) {
                 candies = 0
             } else {
-                candies = candies -1;
+                setCandies(candies => candies - 1);
             }
             firebase.firestore().collection("Users").doc(currentUser.email).update({candies: props.location.state.candy - 1}).catch((err) => console.log(err))
 
@@ -139,7 +139,7 @@ function Gameview(props) {
             if(candies < 5) {
                 candies = 0
             } else {
-                candies = candies -5;
+                setCandies(candies => candies - 5);
             }
             firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
 
@@ -189,7 +189,7 @@ function Gameview(props) {
 
         modify = modify* Math.round(Math.random()*props.location.state.level)/2
         let count1 = Math.round(props.location.state.level * multiplier + modify)
-        let count2 = Math.round(Math.random() * (enemyLevel) + modify)
+        let count2 = Math.round((Math.random()+.2)* (enemyLevel) + modify) 
         setEnemyHP(prevCount => prevCount-count1)
         
         if(count2< 0) count2 = 0;
@@ -294,7 +294,7 @@ function Gameview(props) {
             if(candies < 5) {
                 candies = 0
             } else {
-                candies = candies -5;
+                setCandies(candies => candies - 5);
             }
             firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
 
