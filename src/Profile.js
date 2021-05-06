@@ -100,25 +100,25 @@ export default function Profile() {
 
 
         const getPokemonTest = async () => {
-         const poke = await firebase.firestore().collection("Users").doc(currentUser.email).get()
-         let candy = await firebase.firestore().collection("Users").doc(currentUser.email).get()
-         candy = candy.data().candies;
-         setCandies(candy)
-         console.log(candy)
-         console.log(poke)
-         let pokemonArray=[]
-         let arrayLength = poke.data().pokemon.length;
-         if(poke.data().pokemon.length > 30) arrayLength=30;
-         for(let i =0; i< arrayLength; i++) {
-         const request = await axios.get('https://pokeapi.co/api/v2/pokemon/'+poke.data().pokemon[i].randomPoke)
-             pokemonArray.push(<Cardmin candies={candy} id={i} key={i} enemy={Math.round(Math.random() * 898)} level={poke.data().pokemon[i].level} pokemon={request.data}/>)
-         }
-         setPokemon(poke.data().pokemon)
-         setPokemonBody(pokemonArray)
-         
-         setLoading(false)
-         
-         }
+            const poke = await firebase.firestore().collection("Users").doc(currentUser.email).get()
+            let candy = await firebase.firestore().collection("Users").doc(currentUser.email).get()
+            candy = candy.data().candies;
+            setCandies(candy)
+            let pokemonArray=[]
+            let arraylength = 24
+            if(poke.data().pokemon.length < 24) arraylength=poke.data().pokemon.length
+            console.log(poke.data())
+    
+            for(let i =0; i< arraylength; i++) {
+            const request = await axios.get('https://pokeapi.co/api/v2/pokemon/'+poke.data().pokemon[i].randomPoke)
+                pokemonArray.push(<Cardmin candies={candy} id={i} key={i} enemy={Math.round(Math.random() * 898)} level={poke.data().pokemon[i].level} pokemon={request.data}/>)
+            }
+            setPokemon(poke.data().pokemon)
+            setPokemonBody(pokemonArray)
+            setIndex(0)
+            setLoading(false)
+            
+            }
          await getPokemonTest()
     }
   
