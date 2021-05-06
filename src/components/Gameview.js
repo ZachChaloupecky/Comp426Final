@@ -222,6 +222,46 @@ function Gameview(props) {
             }
         }
         setText("Failed to catch " + pokemon2.name + "!")
+        let count2 = Math.round((Math.random()+.2)* (enemyLevel)) 
+        if(count2< 0) count2 = 0;
+        setMyHP(prev => prev - count2)
+        if(myHP-count2 <= 0) {
+            setMyHP(0)
+            console.log("You Lose")
+            setText(pokemon.name + " has fainted!")
+            let level = props.location.state.level-1
+            if(level===0) level = 1
+            firebase.firestore().collection("Users").doc(currentUser.email)
+            .get().then((doc) => {
+  
+              // Assign array to local javascript variable
+              var objects = doc.data().pokemon
+        
+              // Assing desired element of object to local javascript variable 
+              var objectToupdate = objects[props.location.state.id]
+  
+              // Update field of the element assigned to local javascript variable
+              objectToupdate.level = level  
+              // reassign object to local array variable
+              objects[props.location.state.id] = objectToupdate 
+
+            firebase.firestore().collection("Users").doc(currentUser.email)
+                .update({
+                  pokemon: objects
+                })
+            })
+            if(candies < 5) {
+                candies = 0
+            } else {
+                setCandies(candies => candies - 5);
+            }
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
+
+            setTimeout(function() {
+                history.push('/')
+            },2000)
+            return;
+        }
 
     }
 
@@ -315,7 +355,7 @@ function Gameview(props) {
         setPokemon2(request2.data);
 
         setEnemyHP(myHP + Math.round((Math.random() * 10)))
-        setEnemyHPMax(enemyHP)
+        setEnemyHPMax(myHP + Math.round((Math.random()*10)))
         setMyHP(props.location.state.level * 10)
         setEnemyLevel(props.location.state.level + Math.round(Math.random() * 2))
         let candy = await firebase.firestore().collection("Users").doc(currentUser.email).get()
