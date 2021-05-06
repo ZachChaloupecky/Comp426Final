@@ -64,6 +64,7 @@ function Gameview(props) {
             steel: [1, .75, .75, .75, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, .75]
       };
       let a = TYPE_CHART[myType][enemyType]
+      if(a==NaN) a = 1;
       return a;
     }
 
@@ -91,6 +92,11 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
+            if(candies < 1) {
+                candies = 0
+            } else {
+                candies = candies -1;
+            }
             firebase.firestore().collection("Users").doc(currentUser.email).update({candies: props.location.state.candy - 1}).catch((err) => console.log(err))
 
             setTimeout(function() {
@@ -130,7 +136,12 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: props.location.state.candy - 5}).catch((err) => console.log(err))
+            if(candies < 5) {
+                candies = 0
+            } else {
+                candies = candies -5;
+            }
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')
@@ -280,7 +291,12 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: props.location.state.candy - 5}).catch((err) => console.log(err))
+            if(candies < 5) {
+                candies = 0
+            } else {
+                candies = candies -5;
+            }
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')
