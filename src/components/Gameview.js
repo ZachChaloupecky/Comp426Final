@@ -97,7 +97,7 @@ function Gameview(props) {
             } else {
                 setCandies(candies => candies - 1);
             }
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: props.location.state.candy - 1}).catch((err) => console.log(err))
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')
@@ -299,7 +299,8 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: props.location.state.candy + 2}).catch((err) => console.log(err))
+            setCandies(candies => candies + 3)
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
         
             setTimeout(function() {
                 history.push('/')
