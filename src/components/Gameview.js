@@ -71,6 +71,7 @@ function Gameview(props) {
     function flee() {
         if(gameOver) return;
         if(Math.random() < .7) {
+            let candy = candies;
             setText(pokemon.name +" sucessfully flees the battle!")
             setgameOver(true);
             firebase.firestore().collection("Users").doc(currentUser.email)
@@ -92,12 +93,12 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            if(candies < 1) {
-                setCandies(0)
+            if(candy < 1) {
+                candy = 0
             } else {
-                setCandies(candies => candies - 1);
+                candy = candy -1;
             }
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candy}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')
@@ -114,6 +115,7 @@ function Gameview(props) {
         setMyHP(prev => prev - count2)
         if(myHP-count2 <= 0) {
             setMyHP(0)
+            let candy = candies;
             setText(pokemon.name + " has fainted!")
             let level = props.location.state.level-1
             if(level===0) level = 1
@@ -136,12 +138,12 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            if(candies < 5) {
-                setCandies(0)
+            if(candy < 5) {
+                candy = 0
             } else {
-                setCandies(candies => candies - 5);
+               candy = candy -5;
             }
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candy}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')
@@ -166,9 +168,11 @@ function Gameview(props) {
         let modify = 1;
         if(Math.round(Math.random())===0) {modify = -1;}
 
-        modify = modify* Math.round(Math.random()*props.location.state.level)/2
+        modify = modify* Math.round(Math.random()*props.location.state.level)/6
         let count1 = Math.round(props.location.state.level * 1.3 + modify)
-        let count2 = Math.round(Math.random() * (enemyLevel + props.location.state.level) + modify)
+        let enemymod = Math.round((Math.random()+.3));
+        if(enemymod < .7) enemymod = .7;
+        let count2 = Math.round(enemymod * (enemyLevel * 1.2) + modify)
         setEnemyHP(prevCount => prevCount-count1)
         if(count2< 0) count2 = 0;
         check(count1, count2);
@@ -188,9 +192,11 @@ function Gameview(props) {
         let modify = 1;
         if(Math.round(Math.random())===0) {modify = -1;}
 
-        modify = modify* Math.round(Math.random()*props.location.state.level)/2
+        modify = modify* Math.round(Math.random()*props.location.state.level)/6
         let count1 = Math.round(props.location.state.level * multiplier + modify)
-        let count2 = Math.round((Math.random()+.2)* (enemyLevel) + modify) 
+        let enemymod = Math.round((Math.random()+.3));
+        if(enemymod < .7) enemymod = .7;
+        let count2 = Math.round(enemymod * (enemyLevel * 1.2) + modify) 
         setEnemyHP(prevCount => prevCount-count1)
         
         if(count2< 0) count2 = 0;
@@ -227,6 +233,7 @@ function Gameview(props) {
         if(count2< 0) count2 = 0;
         setMyHP(prev => prev - count2)
         if(myHP-count2 <= 0) {
+            let candy = candies;
             setMyHP(0)
             console.log("You Lose")
             setText(pokemon.name + " has fainted!")
@@ -251,12 +258,12 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            if(candies < 5) {
-                setCandies(0);
+            if(candy < 5) {
+                candy = 0;
             } else {
-                setCandies(candies => candies - 5);
+               candy = candy-5;
             }
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candy}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')
@@ -266,7 +273,7 @@ function Gameview(props) {
 
     }
 
-    function check(count1, count2) {
+    async function check(count1, count2) {
         let textArray = [
             pokemon.name + " attacks for " + count1 + "  damage!  " + pokemon2.name + " retaliates for " + count2 + " damage!", 
             pokemon.name + " hits " + pokemon2.name + " for " + count1 + "  damage!  " + pokemon2.name + " retaliates for " + count2 + " damage!",
@@ -279,10 +286,9 @@ function Gameview(props) {
             setEnemyHP(0)
             setText(pokemon.name + " wins")
             let level = props.location.state.level+1
-
             firebase.firestore().collection("Users").doc(currentUser.email)
             .get().then((doc) => {
-  
+        
               // Assign array to local javascript variable
               var objects = doc.data().pokemon
         
@@ -299,8 +305,8 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            setCandies(candies => candies + 3)
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
+
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies+3}).catch((err) => console.log(err))
         
             setTimeout(function() {
                 history.push('/')
@@ -309,6 +315,7 @@ function Gameview(props) {
         } 
         setMyHP(prev => prev - count2)
         if(myHP-count2 <= 0) {
+            let candy = candies;
             setMyHP(0)
             console.log("You Lose")
             setText(pokemon.name + " has fainted!")
@@ -333,12 +340,12 @@ function Gameview(props) {
                   pokemon: objects
                 })
             })
-            if(candies < 5) {
-                candies = 0
+            if(candy < 5) {
+                candy = 0;
             } else {
-                setCandies(candies => candies - 5);
+                candy=candy-5;
             }
-            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies}).catch((err) => console.log(err))
+            firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candy}).catch((err) => console.log(err))
 
             setTimeout(function() {
                 history.push('/')

@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './card.css'
 
 function Longcard(props) {
+    const [myPoke, setImg] = useState(0);
+
+    useEffect(() => {
+        if(props.pokemon.sprites.back_default == null) {
+            setImg(props.pokemon.sprites.front_default)
+        } else {
+            setImg(props.pokemon.sprites.back_default)
+        }
+        return;
+    },[])
+
     return (
         <div className="background">
             <div className="float">
@@ -13,7 +24,7 @@ function Longcard(props) {
             </div>
 
            <div className="title2"> 
-                <img className = "Card__img"  alt="hi" src={props.pokemon.sprites.back_default}></img>
+                <img className = "Card__img"  alt="Error" src={myPoke}></img>
             </div>
             
             <div className="Card__types">
