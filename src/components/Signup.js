@@ -21,10 +21,13 @@ export default function Signup(props) {
         try {
             setError('')
             setLoading(true);
+
            await signup(email,passwordRef.current.value)
            history.push('/')
         } catch {
             setError('Failed to create an Account')
+            setLoading(false)
+            return;
         }
         const users = firebase.firestore().collection("Users")
         const pokemon = []

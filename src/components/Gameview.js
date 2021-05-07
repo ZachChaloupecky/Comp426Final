@@ -93,7 +93,7 @@ function Gameview(props) {
                 })
             })
             if(candies < 1) {
-                candies = 0
+                setCandies(0)
             } else {
                 setCandies(candies => candies - 1);
             }
@@ -137,7 +137,7 @@ function Gameview(props) {
                 })
             })
             if(candies < 5) {
-                candies = 0
+                setCandies(0)
             } else {
                 setCandies(candies => candies - 5);
             }
@@ -152,6 +152,7 @@ function Gameview(props) {
 
 
     function decrementCount () {
+        if(gameOver) return;
         if(enemyHP <= 0 ){
             setEnemyHP(0)
             console.log("You Win!")
@@ -251,7 +252,7 @@ function Gameview(props) {
                 })
             })
             if(candies < 5) {
-                candies = 0
+                setCandies(0);
             } else {
                 setCandies(candies => candies - 5);
             }
