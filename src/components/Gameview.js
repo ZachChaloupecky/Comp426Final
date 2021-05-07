@@ -210,6 +210,7 @@ function Gameview(props) {
             setText("Not enough candies!")
             return;
         }
+        let candy = candies;
         if(enemyHP < enemyHPMax * .3) {
             if(Math.random() < .3) {
                 setText("Successfully caught " + pokemon2.name + "!")
@@ -221,7 +222,7 @@ function Gameview(props) {
                     level,
                 }),
                 })
-                await firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candies - 10 }).catch((err) => console.log(err))
+                await firebase.firestore().collection("Users").doc(currentUser.email).update({candies: candy - 10 }).catch((err) => console.log(err))
                 setTimeout(function() {
                     history.push('/')
                 },2000)
