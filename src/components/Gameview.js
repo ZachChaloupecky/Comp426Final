@@ -170,8 +170,9 @@ function Gameview(props) {
 
         modify = modify* Math.round(Math.random()*props.location.state.level)/6
         let count1 = Math.round(props.location.state.level * 1.3 + modify)
-        let enemymod = Math.round((Math.random()+.3));
+        let enemymod = (Math.random()+.1);
         if(enemymod < .7) enemymod = .7;
+        if(props.location.state.level < 10) modify = -1;
         let count2 = Math.round(enemymod * (enemyLevel * 1.2) + modify)
         setEnemyHP(prevCount => prevCount-count1)
         if(count2< 0) count2 = 0;
@@ -364,8 +365,8 @@ function Gameview(props) {
 
         setPokemon2(request2.data);
 
-        setEnemyHP(myHP + Math.round((Math.random() * 10)))
-        setEnemyHPMax(myHP + Math.round((Math.random()*10)))
+        setEnemyHP(myHP + Math.round((Math.random() * props.location.state.level/15)))
+        setEnemyHPMax(myHP + Math.round((Math.random()*props.location.state.level/15)))
         setMyHP(props.location.state.level * 10)
         setEnemyLevel(props.location.state.level + Math.round(Math.random() * 2))
         let candy = await firebase.firestore().collection("Users").doc(currentUser.email).get()
